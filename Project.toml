@@ -1,0 +1,8 @@
+name = "ITensorsOperators"
+uuid = "513a361a-bedc-4bf6-9b49-0970e3ab1d64"
+authors = ["Lukas Reich <lukasreich@online.de>"]
+version = "0.1.0"
+
+[deps]
+ITensorMPS = "0d1a4710-d33b-49a5-8f18-73bdf49b47e2"
+ITensors = "9136182c-28ba-11e9-034c-db9fb085ebd5"
