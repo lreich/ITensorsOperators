@@ -103,14 +103,13 @@ The Hamiltonian is: H = Σᵢ [J Sᵢ·Sᵢ₊₁ + K (Sᵢ·Sᵢ₊₁)²]
 function BLBQ_Hamiltonian_MPO(::Val{:Spin}, sites::Vector{<:Index};
     J::Real=1, 
     K::Real=1, 
-    periodic::Bool=false, 
-    periodic_mode::Union{Val{:optimized},Val{:default}}=Val(:default))
+    periodic::Bool=false)
 
     @assert hastags(sites[1], "S=1") "The sites must be spin-1 sites for the BLBQ model."
 
     L = length(sites)
     L_bounds = periodic ? L : L - 1
-    site_ordering = periodic ? get_pbc_order_1D(L; mode=periodic_mode) : collect(1:L)
+    site_ordering = collect(1:L)
     
     # Bilinear term
     os1 = OpSum()
@@ -356,7 +355,6 @@ function BLBQ_Hamiltonian_MPO(::Val{:MF2}, sites::Vector{<:Index};
 
     N = length(sites)
     N_bounds = periodic ? N : N-3
-    # site_ordering = periodic ? get_pbc_order_1D(N; mode=periodic_mode) : collect(1:N)
     site_ordering = collect(1:N)
 
     os = OpSum()
